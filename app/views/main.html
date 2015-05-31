@@ -6,11 +6,84 @@
         <meta charset="${_response_encoding}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap.css'}">        
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/jquery-1.11.3.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         #{get 'moreScripts' /}
+        <script src="@{'/public/javascripts/bootstrap.js'}" type="text/javascript" ></script>
+        
     </head>
     <body>
+   
+	  <div class="container">
+	  	
+	  	<img src="@{'/public/images/logotipo-utc.png'}" height="100px">
+	  
+	    <!-- Menu -->
+		    <nav class="navbar navbar-inverse" role="navigation">
+			  <!-- El logotipo y el icono que despliega el menú se agrupan
+			       para mostrarlos mejor en los dispositivos móviles -->
+			  <div class="navbar-header">
+			    <button type="button" class="navbar-toggle" data-toggle="collapse"
+			            data-target=".navbar-ex1-collapse">
+			      <span class="sr-only">Desplegar navegación</span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			      <span class="icon-bar"></span>
+			    </button>
+			    <a class="navbar-brand" href="#">Admisión</a>
+			  </div>
+			 
+			  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+			       otro elemento que se pueda ocultar al minimizar la barra -->
+			  <div class="collapse navbar-collapse navbar-ex1-collapse">
+			    <ul class="nav navbar-nav">
+			      <li class="active"><a href="#">Inicio</a></li>
+			      <li><a href="#">Autoridades</a></li>
+			      <li class="dropdown">
+			        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			          Programas <b class="caret"></b>
+			        </a>
+			        <ul class="dropdown-menu">
+			          <li><a href="#">Desarrollo Humano</a></li>
+			          <li><a href="#">Contabilidad y Auditoría</a></li>
+			          <li><a href="#">Docencia Universitaria</a></li>		          
+			          <li><a href="#">Planeamiento y Adm Educativa</a></li>		          
+			          <li><a href="#">Gestión de Energías</a></li>
+			          <li><a href="#">Gestión de la producción</a></li>
+			          <li><a href="#">Seguridad del Trabajo</a></li>		         		          		          
+			        </ul>
+			      </li>
+			    </ul>
+			 
+			 	<!-- 
+			    <form class="navbar-form navbar-left" role="search">
+			      <div class="form-group">
+			        <input type="text" class="form-control" placeholder="Buscar">
+			      </div>
+			      <button type="submit" class="btn btn-default">Enviar</button>
+			    </form>
+			 	 -->
+			    <ul class="nav navbar-nav navbar-right">
+			      <li><a href="#">Ingresar - Registarse</a></li>
+			      <li class="dropdown">
+			        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			          Usuario <b class="caret"></b>
+			        </a>
+			        <ul class="dropdown-menu">
+			          <li><a href="#">Configuración</a></li>
+			           <li class="divider"></li>
+			          <li><a href="#">Cerrar Sesión</a></li>
+			        </ul>
+			      </li>
+			    </ul>
+			  </div>
+			</nav>
+	   <!-- Fin del Menu -->
+        
         #{doLayout /}
+        
+    </div><!-- container -->
+         
     </body>
 </html>
