@@ -9,7 +9,7 @@
 		<img alt="" src="@{'/public/images/formatoRegistro.png'}" class="img-responsive">
 
 			<div class="panel-body">
-				<form class="form" role="form" action="">
+				<form class="form" role="form" action="@{Usuarios.guardarPostulante}">
 					<div class="form-group">
 						<label for="">Para Nuevos Usuarios:</label>
 						<a href="@{Usuarios.login}" class="pull-right">¿Ya tiene Cuenta?</a>
@@ -28,14 +28,20 @@
 		                  </div>
 					</div>
 					
-					<div class="form-group">						
+					<div class="form-group">	
+						#{if flash.existente}	
+						<span class="bg-danger col-lg-12 entrada text-center">&{flash.existente}</span>
+						#{/if}			
 						<span class="col-lg-3"  style="text-align: right;">Email:</span>
-						  <div class="col-lg-9">
+						  <div class="col-lg-9">						  	
 		                  	<input type="email" class="form-control input-sm entrada" name="email" value="${flash.email}" placeholder="Ingrese su dirección de email" required>
 		                  </div>
 					</div>
 					
-					<div class="form-group">						
+					<div class="form-group">	
+						#{if flash.error}	
+						<span class="bg-danger col-lg-12 entrada text-center">&{flash.error}</span>
+						#{/if}					
 						<span class="col-lg-3"  style="text-align: right;">Contraseña:</span>
 						  <div class="col-lg-9">
 		                  	<input type="password" class="form-control input-sm entrada" name="password"  placeholder="Ingrese su contraseña" required>
@@ -56,3 +62,13 @@
 		</div><!-- panel -->
 	</div> <!-- col-lg-6 -->
 </div><!-- row -->
+
+<br><br><br><br><br><br><br><br>
+
+<a href="/usuarios/activarCuenta?identificador=jose@gmail.comGarcesJose" class="btn btn-danger">Activar</a>
+
+
+
+
+
+
