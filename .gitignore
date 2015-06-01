@@ -9,3 +9,4 @@
 /eclipse/*.launch
 eclipse/
 .classpath
+.project
