@@ -1,11 +1,12 @@
 package controllers;
 
-import javax.swing.JOptionPane;
+
 
 import models.Rol;
 import models.Usuario;
+import play.mvc.Controller;
 
-public class Usuarios extends Secure.Security {
+public class Usuarios extends Controller {
 
 	
 	//Vista para Iniciar Sesion
@@ -18,12 +19,6 @@ public class Usuarios extends Secure.Security {
         render();
     }
 
-    //Para autenticar Usuarios -> Falta cerificacion del estado de la cuenta activo o no
-    static boolean authenticate(String email, String password) {
-        Usuario usuario = Usuario.find("byEmail", email).first();
-        return usuario != null && usuario.password.equals(password);
-    }
-    
     
     //Proceso para guardar un Nuevo Usuario Validando el email y password
     public static void guardarPostulante(String nombre, String apellido, String email,String password, String confirm_password) {

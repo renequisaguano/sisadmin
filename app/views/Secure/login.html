@@ -9,7 +9,19 @@
 		<img alt="" src="@{'/public/images/formato.png'}" class="img-responsive">
 
 			<div class="panel-body">
-				<form class="form" role="form" action="">
+				#{form @authenticate()}
+					#{if flash.clave}
+						<p class="bg-danger">&{flash.clave}</p>
+					#{/if}
+					#{if flash.usuario}
+						<p class="bg-danger">&{flash.usuario}</p>
+					#{/if}
+    				#{if flash.success}
+						<p class="bg-success">&{flash.success}</p>
+					#{/if}
+					#{if flash.inactivo}
+						<p class="bg-success">&{flash.inactivo}</p>
+					#{/if}
 					<div class="form-group">
 						<label for="">Para Usuarios Registrados:</label>
 						<a href="" class="pull-right">¿Olvidó su Contraseña?</a>
@@ -17,7 +29,7 @@
 					<div class="form-group">
 						<div class="input-group">
 							  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-			                  <input type="email" class="form-control input-sm" name="email" value="${flash.username}" placeholder="Ingrese su e-mail" required>
+			                  <input type="email" class="form-control input-sm" name="username" value="${flash.username}" placeholder="Ingrese su e-mail" required>
 		                 </div> 
 					</div>
 					<div class="form-group">
@@ -30,7 +42,7 @@
 					<div class="form-group">
 						<button class="btn btn-primary form-control " type="submit">Ingresar</button>
 					</div>
-				</form>
+				#{/form}
 			</div><!-- panel-body -->
 		</div><!-- panel -->
 	</div> <!-- col-lg-6 -->
