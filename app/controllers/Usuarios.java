@@ -8,11 +8,6 @@ import play.mvc.Controller;
 
 public class Usuarios extends Controller {
 
-	
-	//Vista para Iniciar Sesion
-    public static void login() {
-        render();
-    }
     
     //Vista para Registrar un Nuevo Usuario
     public static void registro() {    	
