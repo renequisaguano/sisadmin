@@ -66,17 +66,19 @@
 			 	 -->
 			    <ul class="nav navbar-nav navbar-right">
 			      <li><a href="/secure/login">Ingresar</a></li>
-			      <li><a href="@{Usuarios.registro}">Registarse</a></li>			       
-			      <li class="dropdown">
-			        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			          Usuario <b class="caret"></b>
-			        </a>
-			        <ul class="dropdown-menu">
-			          <li><a href="#">Configuración</a></li>
-			           <li class="divider"></li>
-			          <li><a href="#">Cerrar Sesión</a></li>
-			        </ul>
-			      </li>
+			      <li><a href="@{Usuarios.registro}">Registarse</a></li>	
+			      #{if conectado}		       
+				      <li class="dropdown">
+				        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				         ${conectado} <b class="caret"></b>
+				        </a>
+				        <ul class="dropdown-menu">
+				          <li><a href="#">Configuración</a></li>
+				           <li class="divider"></li>
+				          <li><a href="/secure/logout">Cerrar Sesión</a></li>
+				        </ul>
+				      </li>
+			      #{/if}
 			    </ul>
 			  </div>
 			</nav>
