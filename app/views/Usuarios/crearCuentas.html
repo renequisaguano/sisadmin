@@ -1,0 +1,102 @@
+#{extends 'main.html' /} #{set title:'crearCuentas.html' /}
+
+<div class="row">
+	<div class="col-lg-9">
+		<div class="well">
+			<div class="panel">
+				<img alt="" src="@{'/public/images/formatoRegistro.png'}"
+					class="img-responsive">
+
+				<div class="panel-body">
+					<form class="form" role="form"
+						action="@{Usuarios.guardarPersonal}" method="POST">
+						<div class="form-group">
+							<label for="">Registro de Nuevos Usuarios:</label> 
+						</div>
+						<div class="form-group">
+							<span class="col-lg-3" style="text-align: right;">Nombres:</span>
+							<div class="col-lg-9">
+								<input type="text" class="form-control input-sm entrada"
+									name="nombre" value="${flash.nombre}"
+									placeholder="Ingrese sus nombres" required>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<span class="col-lg-3" style="text-align: right;">Apellidos:</span>
+							<div class="col-lg-9">
+								<input type="text" class="form-control input-sm entrada"
+									name="apellido" value="${flash.apellido}"
+									placeholder="Ingrese sus apellidos" required>
+							</div>
+						</div>
+
+						<div class="form-group">
+							#{if flash.existente} <span
+								class="bg-danger col-lg-12 entrada text-center">&{flash.existente}</span>
+							#{/if} <span class="col-lg-3" style="text-align: right;">Email:</span>
+							<div class="col-lg-9">
+								<input type="email" class="form-control input-sm entrada"
+									name="email" value="${flash.email}"
+									placeholder="Ingrese su dirección de email" required>
+							</div>
+						</div>
+
+						<div class="form-group">
+							#{if flash.error} <span
+								class="bg-danger col-lg-12 entrada text-center">&{flash.error}</span>
+							#{/if} <span class="col-lg-3" style="text-align: right;">Contraseña:</span>
+							<div class="col-lg-9">
+								<input type="password" class="form-control input-sm entrada"
+									name="password" placeholder="Ingrese su contraseña" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<span class="col-lg-3" style="text-align: right;">Confirme
+								la Contraseña:</span>
+							<div class="col-lg-9">
+								<input type="password" class="form-control input-sm entrada"
+									name="confirm_password" placeholder="Repita su contraseña"
+									required>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<span class="col-lg-3" style="text-align: right;">Defina un Rol</span>
+							<div class="col-lg-9">
+								<select name="idRol" class="form-control input-sm entrada">
+									#{list items:roles, as: 'r'}
+										<option value="${r.id}">${r.descripcion}</option>
+									#{/list}
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							
+							<button class="btn btn-primary form-control" type="submit">
+								
+								<span class="glyphicon glyphicon-saved">&nbsp;</span>Crear
+								Cuenta
+								
+							</button>
+							
+						</div>
+					</form>
+				</div>
+				<!-- panel-body -->
+			</div>
+			<!-- panel -->
+
+		</div>
+	</div>
+	<div class="col-lg-3">
+		<div class="well">
+			<ul class="list-group">
+				<li class="list-group-item"><a href="@{Usuarios.crearCuentas}">Crear
+						usuarios</a></li>
+				<li class="list-group-item"><a>Eliminar Usuarios</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -2,12 +2,28 @@ package controllers;
 
 
 
+import java.util.List;
+
 import models.Rol;
 import models.Usuario;
+import play.mvc.Before;
 import play.mvc.Controller;
 
 public class Usuarios extends Controller {
 
+	@Before
+	public static void mostrarUsuario(){
+		try{
+			Usuario user = Usuario.find("byEmail", Security.connected()).first();
+			//obteniendo datos del usuario que ha iniciado sesion
+			if(Security.isConnected()) {
+		        renderArgs.put("conectado", user);
+		       
+		    }
+			}catch(Exception ex){
+				
+			}
+	}
     
     //Vista para Registrar un Nuevo Usuario
     public static void registro() {    	
@@ -83,6 +99,47 @@ public class Usuarios extends Controller {
     	render();
     }
     
+    //Formulario de creacion de cuentas para el personal de posgrados
+    public static void crearCuentas(){
+    	List<Rol>roles=Rol.findAll();
+    	render(roles);
+    }
+    public static void panelAdministracion(){
+    	
+    	render();
+    }
     
-    
+    //Proceso para guardar un Nuevo Usuario que sea persoal de posgrados Validando el email y password
+    public static void guardarPersonal(String nombre, String apellido, String email,String password, Long idRol, String confirm_password) {
+    	
+    	flash.put("nombre", nombre);
+		flash.put("apellido", apellido);
+		flash.put("email", email);
+		System.out.println("este es"+idRol);
+		//verificando si los password proporcionados por el usuario coinciden
+		if(password.equals(confirm_password)){
+			
+			//buscando si el usuario ya ha sido registrado anteriormente
+			Usuario user = Usuario.find("byEmail",email).first(); 
+			
+			if (user == null){
+				String identificador=generarIdentificador(email, apellido, nombre);
+				Rol rol=Rol.findById(idRol);
+				//Rol rol=Rol.find("descripcion= ?", idRol).first();//Asignando un rol al Usuario por defecto es POSTULANTE
+				Usuario u=new Usuario(nombre,apellido,email,password,identificador,false,rol);
+				u.save();	
+				enviarConfirmacion(u);			
+			}else{
+		
+			flash.put("existente", "Error: El email: <b>"+email+"</b>, ya esta en uso.");
+			registro();
+			}
+	
+		}else
+		{					
+			flash.error("Error: Las <b> contraseñas </b> ingresadas no coinciden.");
+			registro();
+		}  	   	
+    }  
+       
 }
