@@ -1,0 +1,40 @@
+#{extends 'main.html' /} #{set title:'Administracion.html' /}
+
+<style>
+.pie-usuarios {
+	background-color: #4CB1CF;
+	color: white;
+	text-align: center;
+}
+
+.panel-body>i {
+	color: #4CB1CF;
+	font-size: 65px;
+}
+
+.panel:HOVER {
+	box-shadow: 0px 0px 5px 2px #4CB1CF;
+}
+</style>
+
+<div class="well">
+	<h1>Administración</h1>
+	Seleccione una opción: <br>
+	<br>
+	<div class="row">
+		<div class="col-md-3 col-sm-12 col-xs-12">
+			<a href="@{Usuarios.administracionPersonal}">
+				<div class="panel">
+					<div class="panel-body text-center">
+						<i class="fa fa-users"></i>
+					</div>
+					<div class="panel-footer pie-usuarios">
+						<b>Usuarios </b>
+
+					</div>
+				</div><!-- panel -->
+			</a>
+		</div>
+	</div>
+
+</div>

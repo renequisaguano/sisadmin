@@ -16,3 +16,7 @@ GET     /public/                                staticDir:public
 
 #Manejo de Usuarios
 GET		/usuarios								Usuarios.index
+
+#Funciones de Administracion
+
+GET		/administracion							Administracion.index
